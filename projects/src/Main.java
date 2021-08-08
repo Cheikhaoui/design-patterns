@@ -1,3 +1,7 @@
+import decoratorPattern.Beverage;
+import decoratorPattern.DarkRoast;
+import decoratorPattern.Mocha;
+import decoratorPattern.Whip;
 import observerPattern.CurrentCondition;
 import observerPattern.Statistics;
 import observerPattern.WeaterData;
@@ -21,6 +25,18 @@ public class Main {
         weaterData.unSubscribeObserver(statistics);
         weaterData.updateData(8,10,10);
         weaterData.updateData(15,6,9);
+
+
+        /*
+        test decorator pattern
+         */
+        System.out.println("##### test decorator pattern ##### ");
+        Beverage darkRoast = new DarkRoast();
+        darkRoast = new Mocha(darkRoast);
+        darkRoast = new Mocha(darkRoast);
+        darkRoast = new Whip(darkRoast);
+        System.out.println("coffe description : "+ darkRoast.getDescription());
+        System.out.println("price : "+darkRoast.cost());
 
 
     }
